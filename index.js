@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var CounterModel;
+
 module.exports = function(schema, options) {
 	var options = options || {};
 
@@ -10,8 +12,10 @@ module.exports = function(schema, options) {
 		counterName = options.counterName || defaultName + 'Counter',
 		collectionName = options.collectionName || 'counters';
 
-	var counterSchema = new Schema({ name : String, counter : Number });
-	var CounterModel = mongoose.model('counters', counterSchema);
+	if(!CounterModel){
+		var counterSchema = new Schema({ name : String, counter : Number });
+		CounterModel = mongoose.model('counters', counterSchema);
+	}
 
 	schema.pre('save', function (next) {
 		if (!this.isNew) {
