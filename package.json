@@ -1,0 +1,9 @@
+{
+  "description": "Increment plugin for mongoose",
+  "main": "index.js",
+  "name": "mongoose-numinc",
+  "version": "1.0.0",
+  "dependencies": {
+    "mongoose": "^4.7.2"
+  }
+}
